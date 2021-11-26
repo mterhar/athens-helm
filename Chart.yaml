@@ -1,0 +1,13 @@
+apiVersion: v2
+name: athens-server
+description: Install Athens RTC server in Kubernetes
+type: application
+version: 0.3.0
+appVersion: "2.0.0-beta"
+
+home: https://athensresearch.org
+sources:
+  - https://github.com/athensresearch/athens
+  - https://github.com/fluree/ledger
+
+deprecated: false

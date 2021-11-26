@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: athens-server
+  labels:
+    {{- include "athens-chart.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 3010
+      protocol: TCP
+      name: rtc
+  selector:
+   {{- include "athens-chart.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # needs to be fluree, it's hard coded: https://github.com/athensresearch/athens/blob/139e55fd9e94b626edb1f34acff7ee2d50c26624/src/clj/config.default.edn#L3 
+  name: fluree
+  labels:
+    {{- include "athens-chart.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8090
+      targetPort: 8090
+      protocol: TCP
+      name: blockchain
+  selector:
+    app: fluree
