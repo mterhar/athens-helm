@@ -54,6 +54,9 @@ service:
   type: ClusterIP
   # -- Hard-coded in the athens image
   port: 3010
+  # -- For use with LoadBalancer service type
+  # loadBalancerIP:
+  # externalTrafficPolicy: Local
 
 ingress:
   # -- Create an ingress object to reference the ClusterIP Athens service
@@ -61,7 +64,7 @@ ingress:
   # -- Set an ingress class name
   className: ""
   # -- Add ingress annotations. Default values fix a frequent timeout issue.
-  annotations: 
+  annotations:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     # The following come from the nginx.conf in athens
