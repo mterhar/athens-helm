@@ -51,6 +51,10 @@ spec:
             httpGet:
               path: /health-check
               port: rtc
+          readinessProbe:
+            httpGet:
+              path: /health-check
+              port: rtc
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

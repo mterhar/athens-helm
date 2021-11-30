@@ -7,7 +7,7 @@ image:
   repository: ghcr.io/athensresearch/athens
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.0.0-beta.1"
+  tag: "v2.0.0-beta.3"
 
 fluree:
   # -- Image used for fluree/ledger data storage
@@ -72,16 +72,9 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: 7d
     nginx.ingress.kubernetes.io/proxy-send-timeout: 7d
     nginx.ingress.kubernetes.io/proxy-read-timeout: 7d
-  hosts:
-    - host: athens.example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  # -- Is not compatible with the Athens client as of 2.0.0-beta so do not set this
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  # -- Set a host name that tells the ingress controller to route traffic to Athens
+  # Without the host value, ingress will try to route all traffic to Athens.
+  host: ""
 
 # -- Set Resource limits for Althens pod, Recommend 2048 mb of memory due to JVM configuration in
 # https://github.com/athensresearch/athens/blob/main/script/docker-run-lan-party.sh#L3

@@ -26,10 +26,7 @@ Install Athens RTC server in Kubernetes
 | ingress.annotations | object | `{"nginx.ingress.kubernetes.io/proxy-connect-timeout":"7d","nginx.ingress.kubernetes.io/proxy-read-timeout":"7d","nginx.ingress.kubernetes.io/proxy-send-timeout":"7d"}` | Add ingress annotations. Default values fix a frequent timeout issue. |
 | ingress.className | string | `""` | Set an ingress class name |
 | ingress.enabled | bool | `false` | Create an ingress object to reference the ClusterIP Athens service |
-| ingress.hosts[0].host | string | `"athens.example.local"` |  |
-| ingress.hosts[0].paths[0].path | string | `"/"` |  |
-| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingress.tls | list | `[]` | Is not compatible with the Athens client as of 2.0.0-beta so do not set this |
+| ingress.host | string | `""` | Set a host name that tells the ingress controller to route traffic to Athens Without the host value, ingress will try to route all traffic to Athens. |
 | nodeSelector | object | `{}` | Set nodeSelector for the whole chart, includes Athens and Ledger |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` | Set podSecurityContext for athens pod. Fluree pod has fsGroup hard coded to work with the fluree/ledger user id: 1000 |
