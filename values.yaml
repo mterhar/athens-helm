@@ -7,7 +7,7 @@ image:
   repository: ghcr.io/athensresearch/athens
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.0.0-beta.1"
+  tag: "v2.0.0-beta.3"
 
 fluree:
   # -- Image used for fluree/ledger data storage
